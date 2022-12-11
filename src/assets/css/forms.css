@@ -1,0 +1,117 @@
+.fasting-form {
+    width: 100%;
+    height: auto;
+    padding: 0;
+    margin: 0;
+}
+
+.fasting-form * {
+    font-family: 'Poppins', sans-serif;
+}
+
+.fasting-form label {
+    margin-top: 20px;
+    margin-bottom: 7px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.fasting-form input[type=checkbox] {
+    background-color: #8E1917;
+    margin-right: 10px;
+}
+
+.fasting-form input[type=text], input[type=password] {
+    display: block;
+    border: 2px solid #a4a4a4;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 10px;
+    padding-left: 20px;
+    margin-bottom: 8px;
+    box-shadow: 0 0 1px grey inset, 0 0 1px grey;
+}
+
+.fasting-form input:focus {
+    outline: none !important;
+    border: 2px solid #5390f5;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    transition: all 200ms;
+}
+
+.fasting-form button {
+    background-color: #8E1917;
+    color: white;
+    height: 45px;
+    border: none;
+    border-radius: 10px;
+    text-shadow: 0 0 2px rgba(255, 255, 255, 0.7);
+    box-shadow: rgba(0, 0, 0, 0.35) 0 3px 9px;
+}
+
+.fasting-form button:hover {
+    background-color: #851715;
+    transition: 300ms;
+}
+
+/* Checkbox */
+.checkbox-container {
+    position: relative;
+    padding-top: 2px;
+    padding-left: 35px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: rgba(238, 238, 238, 0.6);
+    border-radius: 5px;
+}
+
+.checkbox-container:hover input ~ .checkmark {
+    background-color: rgba(204, 204, 204, 0.6);
+}
+
+.checkbox-container input:checked ~ .checkmark {
+    background-color: #851715;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.checkbox-container .checkmark:after {
+    left: 9.5px;
+    top: 6px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
