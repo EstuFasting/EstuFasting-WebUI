@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../estufasting-webui.iml" filepath="$PROJECT_DIR$/../estufasting-webui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/estufasting-webui.iml" filepath="$PROJECT_DIR$/.idea/estufasting-webui.iml" />
     </modules>
   </component>
 </project>

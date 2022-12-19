@@ -38,31 +38,17 @@
     user-select: none;
 }
 
-.tab .login_tab {
-    border-right: none;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
-}
-
-.tab .signup_tab {
-    border-left: none;
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
-}
-
 .shape {
     background: white;
     width: 50%;
     height: calc(40px - 1px);
     position: absolute;
-    top: 0px;
-    left: 0px;
     transition: all 0.4s ease;
     border-radius: 100px;
 }
 
 #login:checked ~ .shape {
-    left: 0px;
+    left: 0;
 }
 
 #login:checked ~ .signup {
@@ -74,7 +60,6 @@
     z-index: 1;
     color: black;
 }
-
 
 #signup:checked ~ .shape {
     left: 50%;

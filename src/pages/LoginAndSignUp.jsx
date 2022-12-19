@@ -16,7 +16,7 @@ export default function LoginAndSignUp() {
                         <img className="container-fluid p-5" src={loginImage} alt="image"/> :
                         <img className="container-fluid p-5 signup-image" src={signUpImage} alt="image"/>}
                 </div>
-                <div className="col-5">
+                <div className="col-5" style={{height: "50rem"}}>
                     <div className="shadow rounded-4 p-5 m-4 bg-white bg-opacity-75">
                         <div className="sliding-radio-outer-wrapper">
                             <div className="sliding-radio-inner-wrapper">
