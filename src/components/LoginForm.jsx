@@ -22,7 +22,6 @@ function LoginForm(props) {
         onSubmit: (values) => {
             authService.login(values.tcknOrEmail, values.password)
                 .then(response => {
-                    console.log(response.headers.authorization);
                     setToken(response.headers.authorization)
                     dispatch(syncUser(response.data.data));
                     history.push("/")
@@ -48,7 +47,6 @@ function LoginForm(props) {
                     <span className="checkmark"></span>
                 </label>
                 <a className="float-end mt-3">Şifremi Unuttum</a>
-                <div className="container m-5"/>
                 <button className={"mt-5 container-fluid"} type={"submit"}>Oturum Aç</button>
             </form>
             <div className="text-center">

@@ -13,10 +13,10 @@ export default function LoginAndSignUp() {
             <div className="row mx-3 px-md-5 d-flex justify-content-center align-items-center">
                 <div className="col-7 d-none d-lg-block text-center">
                     {formFlag ?
-                        <img className="container-fluid p-5" src={loginImage} alt="image"/> :
+                        <img className="container-fluid p-5" style={{paddingTop:0, marginTop: "-30rem"}} src={loginImage} alt="image"/> :
                         <img className="container-fluid p-5 signup-image" src={signUpImage} alt="image"/>}
                 </div>
-                <div className="col-5" style={{height: "50rem"}}>
+                <div className="col-5" style={{height: "80rem"}}>
                     <div className="shadow rounded-4 p-5 m-4 bg-white bg-opacity-75">
                         <div className="sliding-radio-outer-wrapper">
                             <div className="sliding-radio-inner-wrapper">

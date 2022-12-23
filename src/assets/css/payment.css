@@ -1,0 +1,68 @@
+.payment-container {
+    background-color: rgba(253, 253, 253, 0.5);
+    padding: 2rem 3rem 5rem 3rem;
+    border-radius: 20px;
+    font-family: "Bio Sans Soft Regular", sans-serif !important;
+}
+
+.field {
+    margin-bottom: 4vh;
+}
+
+.header {
+    font-size: 1.5rem;
+}
+
+.new-card-content {
+    user-select: none;
+    border-width: 2px !important;
+    border-radius: 17px;
+    background-color: rgba(186, 246, 215, 0.25);
+    padding: 3vh 4% 3vh 4%;
+}
+
+.new-card-content .col-4 {
+    padding-left: 0;
+}
+
+.new-card-content input {
+    background-color: white;
+    border-radius: 7px;
+    border: solid 2px #e5e5e5;
+    height: 45px;
+    color: #51525b;
+    font-size: 16px;
+}
+
+.new-card-content .label {
+    margin: 0;
+    font-size: 16px;
+    color: #363636;
+}
+
+.new-card-content .sub-label {
+    font-size: 11px;
+    margin-top: 0;
+    color: rgb(154, 154, 154);
+}
+
+.summary .item {
+    padding: 0.3rem 0;
+}
+
+.summary {
+    background-color: transparent;
+    padding: 2vh;
+}
+
+.complete-payment-button {
+    width: 100%;
+    height: 40px;
+    background-color: #17B86C;
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 7px;
+
+
+}

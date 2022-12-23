@@ -4,7 +4,7 @@ import {useFormik} from "formik";
 import {setToken} from "../localStorage";
 import {syncUser} from "../store/actions/userActions";
 import {toast} from "react-toastify";
-import {handleCatch} from "../utilities/Utils";
+import {handleCatch} from "../utilities/utils";
 import React from "react";
 import CustomerService from "../services/customerService";
 

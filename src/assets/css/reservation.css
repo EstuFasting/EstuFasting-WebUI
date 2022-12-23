@@ -1,0 +1,128 @@
+.reservation-card {
+    filter: brightness(.98);
+    font-family: "Cairoli Now Extended Black", sans-serif;
+    user-select: none;
+    border-radius: 15px !important;
+}
+
+.reservation-card.disabled {
+    filter: brightness(.95);
+}
+
+.reservation-card .card-header {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #D9D9D9;
+    border-top-left-radius: 15px !important;
+    border-top-right-radius: 15px !important;
+    padding: 5px 0 0;
+    text-align: center;
+    font-weight: 600;
+    font-size: 11px;
+}
+
+.reservation-card .dining-hall-dropdown {
+    background: none !important;
+    border: none !important;
+    height: 15px;
+}
+
+.reservation-card .list-group-item {
+    font-weight: 600;
+    font-size: 13px;
+    color: #00111E;
+    height: 50px;
+    display: flex;
+    vertical-align: center;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.reservation-card .action-button {
+    color: white;
+    line-height: 3;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    background-color: #2C4F00;
+    font-size: 9.8px;
+    font-weight: 600;
+    font-family: "Caros Heavy", sans-serif !important;
+    height: 35px !important;
+    padding: 0;
+}
+
+.action-button.past {
+    background-color: #06668d;
+}
+
+.action-button.reserved {
+    background-color: #EA971B;
+}
+
+.action-button.paid {
+    background-color: #8E1917;
+}
+
+.reservation-card .list-group-item .cal-info {
+    color: #BF3432;
+    font-weight: 600;
+}
+
+.reservation-card .list-group-item .cal-info sup {
+    margin: 2px;
+    font-weight: initial;
+}
+
+.reservation-dropdown {
+    user-select: none;
+    margin-bottom: 10px;
+    width: 19%;
+    background-color: #41494B !important;
+}
+
+.reservation-dropdown * {
+    border: none !important;
+}
+
+.reservation-dropdown .menu {
+    background-color: #41494B !important;
+    width: 99.9% !important;
+    min-width: 0 !important;
+    margin-left: 0.5px !important;
+}
+
+.reservation-dropdown, .reservation-dropdown .menu .item {
+    height: 25px !important;
+    min-height: 0 !important;
+    line-height: 5px !important;
+    text-align: center !important;
+    font-size: 13px;
+    border: none !important;
+}
+
+.reservation-dropdown .text {
+    color: white !important;
+}
+
+.reservation-dropdown i {
+    color: white;
+    margin-right: 35px !important;
+    padding-top: 7px !important;
+}
+
+.reservation-button {
+    user-select: none;
+    height: 25px !important;
+    min-height: 0 !important;
+    line-height: 5px !important;
+    text-align: center !important;
+    font-size: 13px;
+    border: solid 3px #6e6e6e !important;
+    background-color: #3f4444 !important;
+    display: block;
+    margin-bottom: 10px !important;
+    border-radius: 5px;
+    width: 100%;
+    color: white;
+}
