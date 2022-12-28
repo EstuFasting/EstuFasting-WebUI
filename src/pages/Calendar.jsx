@@ -8,9 +8,7 @@ function Calendar() {
 
     const user = useSelector(state => state?.user.userProps.user);
 
-    if (!user.reservations) return <div></div>;
-
-    const calendarReservations = user.reservations.map(reservation => {
+    const calendarReservations = user.reservations?.map(reservation => {
         return {
             date: new Date(reservation.catering.date),
             label:

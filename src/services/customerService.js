@@ -5,11 +5,11 @@ import {getToken} from "../localStorage";
 export default class CustomerService {
 
     signup(data) {
-        return axios.post(`http://localhost:8080/api/v1/customer/create`, data, {headers: {"Accept-Language": "TR"}});
+        return axios.post(`https://estufasting-restapi-production.up.railway.app/api/v1/customer/create`, data, {headers: {"Accept-Language": "TR"}});
     }
 
     get(email) {
-        return axios.get(`http://localhost:8080/api/v1/customer/get/one/fully_joined/by_username?${urlParams({username: email})}`, {
+        return axios.get(`https://estufasting-restapi-production.up.railway.app/api/v1/customer/get/one/fully_joined/by_username?${urlParams({username: email})}`, {
             headers: {
                 "Accept-Language": "TR",
                 'Authorization': getToken()

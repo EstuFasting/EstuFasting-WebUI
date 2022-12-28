@@ -17,7 +17,7 @@ export default function SignedInNavbar() {
     const history = useHistory();
 
     const [languageFlag, setLanguageFlag] = useState(true);
-    const [activeTab, setActiveTab] = useState(history.location.pathname);
+    const [activeTab, setActiveTab] = useState("/calendar");
 
     const dispatch = useDispatch();
     const user = useSelector(state => state?.user.userProps.user);
@@ -29,6 +29,11 @@ export default function SignedInNavbar() {
             dispatch(syncUser(response.data.data));
         }).catch(handleCatch);
     }, []);
+
+    history.listen((location, action) => {
+        if (action === "PUSH")
+            setActiveTab(location.pathname)
+    });
 
     const languageFlagReverse = () => setLanguageFlag(!languageFlag);
 
@@ -79,7 +84,7 @@ export default function SignedInNavbar() {
             <div className="top-navbar  signed-in-left-navbar d-flex flex-column flex-shrink-0 p-3">
                 <img width={500} src={estuLogoOnly} alt="logo" className="my-5" style={{width: 90, marginLeft: 60}}/>
                 <ul className="nav nav-pills flex-column mb-auto">
-                    <li className="nav-item" onClick={() => setActiveTab( "/calendar")}>
+                    <li className="nav-item">
                         <Link to="/calendar" className={classNames({
                             "nav-link": true,
                             "active": activeTab === "/calendar",
@@ -89,7 +94,7 @@ export default function SignedInNavbar() {
                             Takvim
                         </Link>
                     </li>
-                    <li onClick={() => setActiveTab("/reservation")}>
+                    <li>
                         <Link to="/reservation" className={classNames({
                             "nav-link": true,
                             "active": activeTab === "/reservation",
@@ -99,7 +104,7 @@ export default function SignedInNavbar() {
                             Rezervasyon Yap
                         </Link>
                     </li>
-                    <li onClick={() => setActiveTab("/payment")}>
+                    <li>
                         <Link to="/payment" className={classNames({
                             "nav-link": true,
                             "active": activeTab === "/payment",
@@ -109,7 +114,7 @@ export default function SignedInNavbar() {
                             Ödeme Yap
                         </Link>
                     </li>
-                    <li onClick={() => setActiveTab("/settings")}>
+                    <li>
                         <Link to="/settings" className={classNames({
                             "nav-link": true,
                             "active": activeTab === "/settings",

@@ -1,11 +1,11 @@
 #calendar-wrapper {
     user-select: none;
+    position: relative;
 }
 
 #calendar-wrapper .month-name {
     justify-content: center;
     align-items: center;
-    align-content: center;
     display: flex;
     color: black;
     font-weight: 800;
@@ -15,12 +15,9 @@
 
 #calendar-wrapper .calendar-dropdown {
     position: absolute;
-    margin-bottom: 20px;
     border: 1px solid #ccc !important;
     border-radius: 10px;
     font-size: 12px;
-    width: 10%;
-    min-width: 100px;
 }
 
 #calendar {

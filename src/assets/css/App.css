@@ -5,3 +5,10 @@
 .cursor-initial {
     cursor: initial !important;
 }
+
+.page-loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh !important;
+}

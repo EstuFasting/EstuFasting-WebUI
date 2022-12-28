@@ -1,7 +1,6 @@
 import {toast} from "react-toastify";
 
 export const handleCatch = (error) => {
-    console.log(error.response)
     const resp = error.response
     if (!resp || !resp.data) {
         toast.error("Something went wrong 🙁");

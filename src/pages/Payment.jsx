@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Mastercard from "../assets/images/Mastercard.png";
 import Visa from "../assets/images/Visa.png";
 import Troy from "../assets/images/Troy.png";
-import {Icon, Table} from "semantic-ui-react";
+import {Icon} from "semantic-ui-react";
 import ReservationService from "../services/reservationService";
 import {useDispatch, useSelector} from "react-redux";
 import {addDays, isInThePast} from "../utilities/dateUtils";
@@ -17,6 +17,7 @@ function Payment() {
 
     const user = useSelector(state => state?.user.userProps.user);
     const dispatch = useDispatch();
+    const [loading, setLoading] = useState(false);
     const [cardNo, setCardNo] = useState("");
     const [cardOwner, setCardOwner] = useState("");
     const [month, setMonth] = useState("");
@@ -48,12 +49,14 @@ function Payment() {
     }, [user])
 
     const completePayments = () => {
+        if (loading) return;
         if (cardNo.length !== 19 || cardOwner.length <= 5 || !cardOwner.includes(" ") || Number(month) < 1 || Number(year) < 22 || cvv.length < 3) {
             toast.warning("Kart bilgilerinizi doğru giriniz")
             return;
         }
         if (reservations.length === 0) return;
         const ids = reservations.map(r => r.id)
+        setLoading(true)
         reservationService.completePaymentsMultiple({ids: ids}).then(() => {
             toast.success("Ödeme işlemi başarılı");
             dispatch(syncUser({
@@ -64,11 +67,11 @@ function Payment() {
                     }
                 }).concat(otherReservations)
             }))
-        }).catch(handleCatch)
+        }).catch(handleCatch).finally(() => setLoading(false))
     }
 
     function cardNoFormat(value) {
-        let v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '')
+        let v = value.replace(/\s+/g, '').replace(/\D/gi, '')
         let matches = v.match(/\d{4,16}/g);
         let match = matches && matches[0] || ''
         let parts = []
@@ -159,7 +162,7 @@ function Payment() {
                                         <Icon name="user" className="position-absolute ps-3" size="large"
                                               style={{padding: 12}}/>
                                         <input className="ps-5 w-100" type="text" onChange={handleCardOwnerChange}
-                                            value={cardOwner}/>
+                                               value={cardOwner}/>
                                     </div>
                                     <div style={{width: "5%"}}/>
                                 </div>
@@ -195,7 +198,8 @@ function Payment() {
                     <div className="col-md-4 d-flex flex-column justify-content-between">
                         <PaymentSummary lunchCount={lunchCount} dinnerCount={dinnerCount}/>
                         <div className="mt-4">
-                            <button className="complete-payment-button" onClick={completePayments}>Ödemeyi Tamamla
+                            <button className="complete-payment-button" onClick={completePayments}>
+                                {loading ? <Icon name="circle notch" loading size="large"/> : "Ödemeyi Tamamla"}
                             </button>
                         </div>
                     </div>

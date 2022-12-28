@@ -44,7 +44,7 @@ function EsCalendar({foot, reservations}) {
 
     const calendarCells = (startAt, size = 7, disabled = undefined, monthIndex = selectedMonthIndex) => {
         return range(size, startAt).map(day => {
-            const filtered = reservations.filter(reservation => dateToDateString(new Date(selectedYear, monthIndex, day + 1)) === dateToDateString(reservation.date));
+            const filtered = reservations ? reservations.filter(reservation => dateToDateString(new Date(selectedYear, monthIndex, day + 1)) === dateToDateString(reservation.date)) : [];
             const labels = filtered.length === 0 ? undefined : filtered.map(reservation => reservation.label);
             return <td id={String(Math.random() * 100000)} className={classNames({
                 "day": true,
@@ -72,10 +72,11 @@ function EsCalendar({foot, reservations}) {
 
     return (
         <div id="calendar-wrapper">
-            <Dropdown className="calendar-dropdown" style={{left: 290}} placeholder={selectedYear + " Yılı"} search
+            <Dropdown className="calendar-dropdown" style={{left: 0}} placeholder={selectedYear + " Yılı"} search
                       selection value={selectedYear} options={yearOptions}
                       onChange={(event, data) => setSelectedYear(YEARS[data.value])}/>
-            <Dropdown className="calendar-dropdown" style={{left: 450}} placeholder={selectedMonth + " Ayı"} search
+            <Dropdown className="calendar-dropdown" style={{marginLeft: 200}} placeholder={selectedMonth + " Ayı"}
+                      search
                       selection value={selectedMonth} options={monthOptions}
                       onChange={(event, data) => setSelectedMonth(MONTH_NAMES[data.value])}/>
             <div className="text-center month-name">
