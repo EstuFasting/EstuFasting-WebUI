@@ -15,6 +15,7 @@ import Payment from "../pages/Payment";
 import Settings from "../pages/Settings";
 
 export default function Dashboard() {
+
     const user = useSelector(state => state?.user.userProps.user);
     const [loggedIn, setLoggedIn] = useState(getToken() !== null);
 
@@ -36,7 +37,6 @@ export default function Dashboard() {
                 <Route exact path="/settings" component={Settings}/>
                 <Route exact path="/reservation" component={Reservation}/>
                 <Route exact path="/login" component={LoginAndSignUp}/>
-                <Route exact path="/sign-up" component={SignUpForm}/>
                 <Footer/>
             </div>
         </div>

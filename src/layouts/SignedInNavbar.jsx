@@ -17,7 +17,7 @@ export default function SignedInNavbar() {
     const history = useHistory();
 
     const [languageFlag, setLanguageFlag] = useState(true);
-    const [activeTab, setActiveTab] = useState("/calendar");
+    const [activeTab, setActiveTab] = useState(history.location.pathname);
 
     const dispatch = useDispatch();
     const user = useSelector(state => state?.user.userProps.user);
@@ -50,7 +50,7 @@ export default function SignedInNavbar() {
                 <nav className="top-navbar signed-in-top-navbar p-3">
                     <div className="signed-in-top-navbar-left-section">
                         <ul>
-                            <li><img width={500} src={logo} alt="logo"/></li>
+                            <li onClick={() => history.push("/")}><img width={500} src={logo} alt="logo"/></li>
                         </ul>
                     </div>
                     <div className="signed-in-top-navbar-right-section p-3">

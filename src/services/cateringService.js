@@ -1,7 +1,6 @@
 import axios from "axios"
 import {urlParams} from "../utilities/utils";
-import {getToken} from "../localStorage";
-import {addDays, getFirstDayOfThisWeek, dateToDateString} from "../utilities/dateUtils";
+import {addDays, dateToDateString, getFirstDayOfThisWeek} from "../utilities/dateUtils";
 
 export default class CateringService {
 
@@ -14,7 +13,7 @@ export default class CateringService {
             "sort.orders%5B0%5D.property": "date",
             lower: dateToDateString(lower),
             upper: dateToDateString(upper)
-        })}`, {headers: {"Accept-Language": "TR", 'Authorization': getToken()}})
+        })}`, {headers: {"Accept-Language": "TR"}})
     }
 
 }

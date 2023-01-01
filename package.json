@@ -20,6 +20,7 @@
     "redux": "^4.1.0",
     "semantic-ui-css": "^2.5.0",
     "semantic-ui-react": "^2.1.4",
+    "swiper": "^8.4.5",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.9"
   },

@@ -1,0 +1,200 @@
+#main-page-container header {
+    margin-top: -100px;
+    text-align: center;
+    width: 100%;
+    height: 90vh;
+    background-image: url('../images/yemekhane.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 0 0 85% 85% / 30%;
+    user-select: none;
+}
+
+#main-page-container header .overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 150px 50px 50px;
+    color: #FFF;
+    padding-bottom: 200px !important;
+    text-shadow: 1px 1px 1px #333;
+    background-image: linear-gradient(135deg, rgba(37, 37, 37, 0.6) 10%, rgba(37, 37, 37, 0.6) 100%);
+
+}
+
+#main-page-container h1 {
+    margin-bottom: 30px;
+}
+
+#main-page-container h3, p {
+    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 30px;
+}
+
+.login-button {
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 14px;
+    color: whitesmoke;
+    background: #A12C2F;
+    margin-bottom: 50px;
+    box-shadow: 0 3px 20px 0 #0000003b;
+}
+
+.login-button:hover {
+    background: #832527;
+}
+
+.main-page-section {
+    margin: 100px 50px 50px;
+    padding: 30px;
+    border-radius: 30px;
+    background: rgba(211, 211, 211, 0.2);
+    backdrop-filter: blur(2px);
+}
+
+#menu-cards {
+    margin-top: -250px;
+}
+
+.menu-display-card {
+    color: whitesmoke;
+    user-select: none;
+    width: 100%;
+    border-radius: 20px;
+}
+
+.menu-display-card .date {
+    background: url("../images/menu-card-bg.jpg") !important;
+    background-size: 300px 180px !important;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+}
+
+.menu-display-card .date .day {
+    font-size: 60px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.menu-display-card .date .weekday {
+    font-size: 20px;
+    color: greenyellow;
+}
+
+.menu-display-card .menu-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    color: #3b3b3b;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    backdrop-filter: blur(25px);
+    font-weight: bold;
+}
+
+.menu-display-card .menu-items > div {
+    margin: 10px;
+}
+
+@media (max-width: 991px) {
+    .menu-display-card .date {
+        border-bottom-left-radius: 0;
+        border-top-right-radius: 20px;
+        flex-direction: row;
+        padding: 15px;
+    }
+
+    .menu-display-card .menu-items {
+        border-radius: 0 0 20px 20px;
+    }
+
+    .menu-display-card .date .day {
+        font-size: 30px;
+        font-weight: 700;
+        margin-bottom: 0;
+        margin-right: 5px;
+    }
+
+    .menu-display-card .date .weekday {
+        font-size: 25px;
+        margin-left: 5px;
+    }
+}
+
+#announcements {
+    padding: 50px 70px 70px;
+}
+
+#video h1 {
+    color: #4b4b4b !important;
+}
+
+#video iframe {
+    border-radius: 20px;
+}
+
+#map {
+    margin-top: 100px;
+    text-align: center;
+}
+
+#map iframe {
+    border-radius: 20px;
+    min-height: 500px;
+    height: auto;
+    width: 100%;
+}
+
+#feedback {
+    margin-top: 100px;
+}
+
+#feedback input, #feedback textarea {
+    margin: 15px;
+    padding: 10px 10px 10px 15px;
+    border-radius: 15px;
+    color: #444444 !important;
+}
+
+#feedback button {
+    margin: 15px;
+    padding: 10px 10px 10px 15px;
+    border-radius: 10px;
+}
+
+#feedback textarea {
+    width: 97% !important;
+    max-height: 200px;
+    min-height: 100px;
+}
+
+#feedback .right-info {
+    background-color: #A12C2F;
+    color: whitesmoke;
+    height: 100%;
+}
+
+#feedback .right-info .info {
+    padding: 20px;
+    border-radius: 15px;
+    overflow: auto;
+    background-color: #8d282b !important;
+}
+
+#feedback .right-info .info a {
+    color: whitesmoke !important;
+}

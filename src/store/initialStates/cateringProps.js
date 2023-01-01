@@ -1,5 +1,6 @@
 export const cateringProps = {
-    caterings: []
+    caterings: [],
+    mainPageCaterings: []
 }
 
 export default cateringProps

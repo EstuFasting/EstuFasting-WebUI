@@ -5,13 +5,16 @@ import {setToken} from "../localStorage";
 import {syncUser} from "../store/actions/userActions";
 import {toast} from "react-toastify";
 import {handleCatch} from "../utilities/utils";
-import React from "react";
+import React, {useState} from "react";
 import CustomerService from "../services/customerService";
+import {Icon} from "semantic-ui-react";
 
 export default function SignUpForm() {
 
     const customerService = new CustomerService();
 
+    const [showPassword, setShowPassword] = useState(false);
+    const [loading, setLoading] = useState(false);
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -26,10 +29,12 @@ export default function SignUpForm() {
             languageId: 59
         },
         onSubmit: (values) => {
+            if (loading) return;
             if (values.password !== values.passwordRepeated) {
                 toast.error("Şifreler eşleşmiyor")
                 return
             }
+            setLoading(true)
             customerService.signup(values)
                 .then(response => {
                     console.log(response.data)
@@ -37,7 +42,7 @@ export default function SignUpForm() {
                     dispatch(syncUser(response.data.data));
                     history.push("/")
                     toast("Aramıza Hoşgeldiniz", {autoClose: 2500})
-                }).catch(handleCatch)
+                }).catch(handleCatch).finally(() => setLoading(false))
         },
         enableReinitialize: true
     });
@@ -58,14 +63,26 @@ export default function SignUpForm() {
                 <label htmlFor="username">E-posta</label>
                 <input id="username" type="text" name={"username"} onChange={formik.handleChange}
                        value={formik.values.username} placeholder="E-posta Giriniz" required/>
-                <label htmlFor="password">Şifre</label>
-                <input id="password" type="password" name={"password"} onChange={formik.handleChange}
-                       value={formik.values.password} placeholder="Şifre Giriniz" required/>
-                <label htmlFor="passwordRepeated">Şifre Tekrar</label>
-                <input id="passwordRepeated" type="password" name={"passwordRepeated"} onChange={formik.handleChange}
-                       value={formik.values.passwordRepeated} placeholder="Şifreyi Tekrar Giriniz" required/>
+                <div className={"fasting-form-field"}>
+                    <label htmlFor="password">Şifre</label>
+                    {showPassword ?
+                        <Icon name="eye" className="password-toggle" corner onClick={() => setShowPassword(!showPassword)}/>:
+                        <Icon name="eye slash" className="password-toggle" corner onClick={() => setShowPassword(!showPassword)}/>}
+                    <input id="password" type={showPassword ? "text" : "password"} name={"password"} onChange={formik.handleChange}
+                           value={formik.values.password} placeholder="Şifre Giriniz" required autoComplete="new-password"/>
+                </div>
+                <div className={"fasting-form-field"}>
+                    <label htmlFor="passwordRepeated">Şifre Tekrar</label>
+                    {showPassword ?
+                        <Icon name="eye" className="password-toggle" corner onClick={() => setShowPassword(!showPassword)}/>:
+                        <Icon name="eye slash" className="password-toggle" corner onClick={() => setShowPassword(!showPassword)}/>}
+                    <input id="passwordRepeated" type={showPassword ? "text" : "password"} name={"passwordRepeated"} onChange={formik.handleChange}
+                           value={formik.values.passwordRepeated} placeholder="Şifreyi Tekrar Giriniz" required/>
+                </div>
                 <div className="container m-5"/>
-                <button className={"mt-5 container-fluid"} type={"submit"}>Kaydı Tamamla</button>
+                <button className={"mt-5 container-fluid"} type={"submit"}>
+                    {loading ? <Icon name="circle notch" loading size="large"/> : "Kaydı Tamamla"}
+                </button>
             </form>
             <div className="text-center">
                 <span style={{fontSize: "13px"}}>2022© Tüm hakları saklıdır. Eskişehir Teknik Üniversitesi</span>

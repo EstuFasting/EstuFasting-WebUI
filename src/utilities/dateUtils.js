@@ -19,8 +19,11 @@ export const isInThePast = (date) => {
 }
 
 export const getFirstDayOfThisWeek = () => {
-    const now = new Date();
-    return new Date(now.getFullYear(), now.getMonth(), now.getDate() - weekdayIndex(now.getDate(), now.getMonth(), now.getFullYear()));
+    return getFirstWeekDayOfDate(new Date());
+};
+
+export const getFirstWeekDayOfDate = (date) => {
+    return new Date(date.getFullYear(), date.getMonth(), date.getDate() - weekdayIndex(date.getDate(), date.getMonth(), date.getFullYear()));
 };
 
 export const addDays = (date, days) => {

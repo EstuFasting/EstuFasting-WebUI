@@ -2,10 +2,13 @@ import React, {useState} from "react";
 import logo from "../assets/images/signed-out-top-navbar-logo.png"
 import trFlag from "../assets/images/flags/4x3/tr.svg"
 import usFlag from "../assets/images/flags/4x3/gb.svg"
+import {useHistory} from "react-router-dom";
 
 export default function SignedOutNavbar() {
 
     const [languageFlag, setLanguageFlag] = useState(true);
+
+    const history = useHistory();
 
     const languageFlagReverse = () => setLanguageFlag(!languageFlag);
 
@@ -14,7 +17,7 @@ export default function SignedOutNavbar() {
             <nav className="top-navbar signed-out-top-navbar p-3">
                 <div className="signed-out-top-navbar-left-section">
                     <ul>
-                        <li><img width={500} src={logo} alt="logo"/></li>
+                        <li onClick={() => history.push("/")}><img width={500} src={logo} alt="logo"/></li>
                     </ul>
                 </div>
                 <div className="signed-out-top-navbar-right-section p-3">
