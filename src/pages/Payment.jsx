@@ -10,11 +10,13 @@ import {toast} from "react-toastify";
 import {syncUser} from "../store/actions/userActions";
 import {handleCatch} from "../utilities/utils";
 import PaymentSummary from "../components/PaymentSummary";
+import {useTranslation} from "react-i18next";
 
 function Payment() {
 
     const reservationService = new ReservationService();
 
+    const {t} = useTranslation();
     const user = useSelector(state => state?.user.userProps.user);
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(false);
@@ -51,14 +53,14 @@ function Payment() {
     const completePayments = () => {
         if (loading) return;
         if (cardNo.length !== 19 || cardOwner.length <= 5 || !cardOwner.includes(" ") || Number(month) < 1 || Number(year) < 22 || cvv.length < 3) {
-            toast.warning("Kart bilgilerinizi doğru giriniz")
+            toast.warning(t("Enter your card information correctly"))
             return;
         }
         if (reservations.length === 0) return;
         const ids = reservations.map(r => r.id)
         setLoading(true)
         reservationService.completePaymentsMultiple({ids: ids}).then(() => {
-            toast.success("Ödeme işlemi başarılı");
+            toast.success(t("Payment was successful"));
             dispatch(syncUser({
                 ...user, reservations: reservations.map(r => {
                     return {
@@ -125,7 +127,7 @@ function Payment() {
                             <div className="d-flex justify-content-between">
                                 <div className="header">
                                     <Icon name="check circle" style={{color: "#1AB267", marginRight: 10}}/>
-                                    <h3 className="d-inline">Yeni kart ekle</h3>
+                                    <h3 className="d-inline">{t("Add new card")}</h3>
                                 </div>
                                 <div className="icons">
                                     <img src={Troy} className="float-end m-1 mt-2" style={{width: 40}} alt="Troy"/>
@@ -137,8 +139,8 @@ function Payment() {
                             <form className="pt-5">
                                 <div className="field d-flex justify-content-around">
                                     <div className="d-flex flex-column mt-1" style={{width: "40%"}}>
-                                        <h4 className="label">Kart numarası</h4>
-                                        <h5 className="sub-label">Kart üzerindeki 16 haneli numarayı giriniz</h5>
+                                        <h4 className="label">{t("Card number")}</h4>
+                                        <h5 className="sub-label">{t("Add new card")}</h5>
                                     </div>
                                     <div style={{width: "50%"}}>
                                         <Icon name="payment" className="position-absolute ps-3" size="large"
@@ -155,8 +157,8 @@ function Payment() {
                                 </div>
                                 <div className="field d-flex justify-content-around">
                                     <div className="d-flex flex-column mt-1" style={{width: "40%"}}>
-                                        <h4 className="label">Kart sahibi</h4>
-                                        <h5 className="sub-label">Kart üzerindeki ismi giriniz</h5>
+                                        <h4 className="label">{t("Card owner")}</h4>
+                                        <h5 className="sub-label">{t("Enter the name on the card")}</h5>
                                     </div>
                                     <div style={{width: "50%"}}>
                                         <Icon name="user" className="position-absolute ps-3" size="large"
@@ -168,8 +170,8 @@ function Payment() {
                                 </div>
                                 <div className="field d-flex justify-content-around">
                                     <div className="d-flex flex-column mt-1" style={{width: "40%"}}>
-                                        <h4 className="label">Ay / Yıl</h4>
-                                        <h5 className="sub-label">Kartın son kullanım tarihini giriniz</h5>
+                                        <h4 className="label">{t("Month")} / {t("Year")}</h4>
+                                        <h5 className="sub-label">{t("Enter the expiration date of the card")}</h5>
                                     </div>
                                     <div style={{width: "50%"}} className="d-flex justify-content-around p-0">
                                         <div style={{width: "45%"}} className="d-flex justify-content-around p-0">
@@ -184,7 +186,7 @@ function Payment() {
                                             <div className="d-flex flex-column mt-2 ms-3 me-0 ps-2"
                                                  style={{width: "58%"}}>
                                                 <h4 className="label">CVV2</h4>
-                                                <h5 className="sub-label">Güvenlik kodu</h5>
+                                                <h5 className="sub-label">{t("Security Code")}</h5>
                                             </div>
                                             <input style={{width: "42%", paddingLeft: 15}} className="m-0" type="number"
                                                    max="999" min="0" onChange={handleCvvChange} value={cvv}/>
@@ -199,7 +201,7 @@ function Payment() {
                         <PaymentSummary lunchCount={lunchCount} dinnerCount={dinnerCount}/>
                         <div className="mt-4">
                             <button className="complete-payment-button" onClick={completePayments}>
-                                {loading ? <Icon name="circle notch" loading size="large"/> : "Ödemeyi Tamamla"}
+                                {loading ? <Icon name="circle notch" loading size="large"/> : t("Complete Payment")}
                             </button>
                         </div>
                     </div>

@@ -1,8 +1,11 @@
 import React from 'react';
 import {DAY_NAMES} from "../utilities/constants";
 import {weekdayIndex} from "../utilities/dateUtils";
+import {useTranslation} from "react-i18next";
 
 function MenuDisplayCard({date, menuItems}) {
+
+    const {t} = useTranslation();
 
     return (
         <div className="menu-display-card shadow">
@@ -10,7 +13,7 @@ function MenuDisplayCard({date, menuItems}) {
                 <div className="col-lg-5 date shadow">
                     <div className="day">{date.getDate()}</div>
                     <div className="weekday">
-                        {DAY_NAMES[weekdayIndex(date.getDate(), date.getMonth(), date.getFullYear())]}
+                        {t(DAY_NAMES[weekdayIndex(date.getDate(), date.getMonth(), date.getFullYear())])}
                     </div>
                 </div>
                 <div className="col-lg-7 glass-card menu-items">

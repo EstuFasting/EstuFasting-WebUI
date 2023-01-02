@@ -6,7 +6,8 @@ import MenuDisplayCard from "../components/MenuDisplayCard";
 import CateringService from "../services/cateringService";
 import {addDays, getFirstWeekDayOfDate} from "../utilities/dateUtils";
 import {useDispatch, useSelector} from "react-redux";
-import {syncCaterings, syncMainPageCaterings} from "../store/actions/cateringActions";
+import {syncMainPageCaterings} from "../store/actions/cateringActions";
+import {useTranslation} from "react-i18next";
 
 function SignedOutMain() {
 
@@ -15,7 +16,7 @@ function SignedOutMain() {
     const dispatch = useDispatch();
     const cateringsRedux = useSelector(state => state?.caterings.cateringProps.mainPageCaterings);
     const [caterings, setCaterings] = useState(cateringsRedux);
-
+    const {t} = useTranslation();
     const firstWeekday = getFirstWeekDayOfDate(addDays(new Date(), 2));
 
     useEffect(() => {
@@ -44,13 +45,13 @@ function SignedOutMain() {
             {
                 key: 'lunch',
                 icon: <Icon name="sun" color="yellow"/>,
-                content: <span className="text-white">Öğle</span>,
+                content: <span className="text-white">{t("Lunch")}</span>,
             },
             caterings.filter(c => c.meal.id === 2)),
         mealOption({
                 key: 'dinner',
                 icon: <Icon name="moon" color="grey"/>,
-                content: <span className="text-white">Akşam</span>
+                content: <span className="text-white">{t("Dinner")}</span>
             },
             caterings.filter(c => c.meal.id === 3))
     ]
@@ -59,11 +60,11 @@ function SignedOutMain() {
         <div id="main-page-container">
             <header className="shadow">
                 <div className="overlay">
-                    <h1 className="hand-writing">Hosgeldiniz</h1>
-                    <span>Yemek rezervasyonu yapmak için lütfen giriş yapınız.</span>
+                    <h1 className="hand-writing">{t("Welcome")}</h1>
+                    <span>{t("Please login to make reservations")}.</span>
                     <br/>
                     <button className="login-button" onClick={() => history.push("/login")}>
-                        <strong>Giriş Yap</strong>
+                        <strong>{t("Login")}</strong>
                     </button>
                 </div>
             </header>
@@ -75,40 +76,39 @@ function SignedOutMain() {
             </Transition>
 
             <section id="announcements" className="main-page-section p-2 p-lg-5 py-5 mx-3 mx-lg-5">
-                <h2 className="scroll-to-section text-center">Duyurular</h2>
+                <h2 className="scroll-to-section text-center">{t("Announcements")}</h2>
                 <br/>
                 <div className="border-0">
                     <div className="content">
-                        <p>Değerli öğrencilerimiz,</p>
+                        <p>{t("Dear students")},</p>
                         <p>
-                            3 Ekim 2022 Pazartesi günü itibariyle öğrencilerimiz için yemek
-                            hizmetinin verildiği yemekhaneler aşağıdaki tabloda belirtilmiştir.
+                            {t("As of Monday, October 3, 2022, the dining halls where food service is provided for our students are given in the table below")}.
                         </p>
                         <br/>
                         <table className="table">
                             <thead>
                             <tr style={{borderBottom: 2}}>
-                                <th>Öğün</th>
-                                <th>Öğün Saati</th>
-                                <th>Hizmetin verildiği yemekhane</th>
+                                <th>{t("Meal")}</th>
+                                <th>{t("Meal Time")}</th>
+                                <th>{t("Dining Hall")}</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
-                                <th scope="row">Öğle Yemeği</th>
+                                <th scope="row">{t("Lunch")}</th>
                                 <td>11:30 - 14:00</td>
                                 <td>
-                                    <p>Porsuk Meslek Yüksekokulu Öğrenci Yemekhanesi, 2 Eylül Öğrenci Yemekhanesi</p>
+                                    <p>{t("Porsuk Vocational School")} {t("Student")} {t("Dining Hall")}, 2 Eylul {t("Student")} {t("Dining Hall")}</p>
                                 </td>
                             </tr>
 
                             <tr>
-                                <th scope="row">Akşam Yemeği</th>
+                                <th scope="row">{t("Dinner")}</th>
                                 <td>
                                     <p>17:30 - 20:00</p>
                                 </td>
                                 <td>
-                                    <p>Eskişehir Teknik Üniversitesi 2 Eylül Öğrenci Yemekhanesi</p>
+                                    <p>{t("Eskisehir Technical University")} 2 Eylul {t("Student")} {t("Dining Hall")}</p>
                                 </td>
                             </tr>
                             </tbody>
@@ -119,7 +119,7 @@ function SignedOutMain() {
 
             <section className="main-page-section p-0 p-lg-5 py-5 mx-3 mx-lg-5" id="video">
                 <div className="container">
-                    <h1 className="text-center">Otomasyon Kullanım Videosu</h1>
+                    <h1 className="text-center">{t("Dining Hall Automation Guide")}</h1>
                     <div className="embed-responsive embed-responsive-16by9">
                         <iframe height="500" src="https://www.youtube.com/embed/wPz_cpAjMXE" width="100%"/>
                     </div>
@@ -139,20 +139,20 @@ function SignedOutMain() {
                     <div className="col-lg-9 align-self-center">
                         <form className="main-page-section m-0 me-lg-1">
                             <div>
-                                <h2 className="mx-3">Dilek, Öneri, Şikayet</h2>
+                                <h2 className="mx-3">{t("Feedback")}</h2>
                                 <div className="d-flex justify-content-between">
-                                    <input name="name" type="text" id="name" placeholder="İsim Soyisim"
+                                    <input name="name" type="text" id="name" placeholder={`${t("Name")} ${t("Surname")}`}
                                            required className="form-control"/>
                                     <input name="email" type="email" id="email"
-                                           placeholder="Email"
+                                           placeholder={t("E-mail")}
                                            required className="form-control"/>
-                                    <input name="subject" type="text" id="subject" placeholder="Konu"
+                                    <input name="subject" type="text" id="subject" placeholder={t("Subject")}
                                            required className="form-control"/>
                                 </div>
                                 <textarea name="message" className="form-control"
-                                          placeholder="Mesajınız..." required></textarea>
+                                          placeholder={t("Your message") + "..."} required></textarea>
                                 <button type="submit" id="form-submit" className="button login-button" onClick={null}>
-                                    Mesajı gönder
+                                    {t("Send message")}
                                 </button>
                             </div>
                         </form>
@@ -161,11 +161,11 @@ function SignedOutMain() {
                         <div className="right-info m-0 ms-lg-1 main-page-section d-flex">
                             <div className="d-flex justify-content-around flex-column w-100">
                                 <div className="info border-bottom-1">
-                                    <h5><Icon name="phone"/> Telefon</h5>
+                                    <h5><Icon name="phone"/> {t("Phone")}</h5>
                                     <a href="tel:2223211354">(222) 321 35 50 / 1354</a>
                                 </div>
                                 <div className="info mt-2 mt-lg-0">
-                                    <h5><Icon name="envelope outline"/> Email Adresi</h5>
+                                    <h5><Icon name="envelope outline"/> {t("E-mail")}</h5>
                                     <a href="mailto:yemekhane@eskisehir.edu.tr">yemekhane@eskisehir.edu.tr</a>
                                 </div>
                             </div>

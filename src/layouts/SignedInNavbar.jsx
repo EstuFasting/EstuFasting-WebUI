@@ -11,13 +11,15 @@ import {Icon} from "semantic-ui-react";
 import {Link, useHistory} from "react-router-dom";
 import {classNames, handleCatch} from "../utilities/utils";
 import CustomerService from "../services/customerService";
+import {useTranslation} from "react-i18next";
 
 export default function SignedInNavbar() {
 
     const history = useHistory();
-
-    const [languageFlag, setLanguageFlag] = useState(true);
+    const {t, i18n} = useTranslation();
+    const [language, setLanguage] = useState(i18n.language);
     const [activeTab, setActiveTab] = useState(history.location.pathname);
+
 
     const dispatch = useDispatch();
     const user = useSelector(state => state?.user.userProps.user);
@@ -35,7 +37,9 @@ export default function SignedInNavbar() {
             setActiveTab(location.pathname)
     });
 
-    const languageFlagReverse = () => setLanguageFlag(!languageFlag);
+    const changeLanguage = (lang) => {
+        i18n.changeLanguage(lang).then(() => setLanguage(lang))
+    };
 
     const handleLogOutClick = () => {
         history.push("/")
@@ -62,13 +66,13 @@ export default function SignedInNavbar() {
                                 <div className="vr float-start bg-black"
                                      style={{height: 30, marginTop: -2, width: 2, borderRadius: 5, opacity: .2}}/>
                             </li>
-                            {languageFlag ?
-                                <li className="top-navbar-language-selection" onClick={languageFlagReverse}>
+                            {language === "tr" ?
+                                <li className="top-navbar-language-selection" onClick={() => changeLanguage("en")}>
                                     <img src={trFlag} className="d-inline float-start rounded m-1" alt="TR Flag"
                                          style={{width: 25}}/>
                                     <span>Türkçe</span>
                                 </li> :
-                                <li className="top-navbar-language-selection" onClick={languageFlagReverse}>
+                                <li className="top-navbar-language-selection" onClick={() => changeLanguage("tr")}>
                                     <img src={usFlag} className="d-inline float-start rounded m-1" alt="USA Flag"
                                          style={{width: 25}}/>
                                     <span>English</span>
@@ -91,7 +95,7 @@ export default function SignedInNavbar() {
                             "link-dark": activeTab !== "/calendar"
                         })}>
                             <Icon name="clipboard list" size="large" className="mb-2 me-2"/>
-                            Takvim
+                            {t("Calendar")}
                         </Link>
                     </li>
                     <li>
@@ -101,7 +105,7 @@ export default function SignedInNavbar() {
                             "link-dark": activeTab !== "/reservation"
                         })}>
                             <Icon name="calendar plus outline" size="large" className="mb-2 me-2"/>
-                            Rezervasyon Yap
+                            {t("Make Reservation")}
                         </Link>
                     </li>
                     <li>
@@ -111,7 +115,7 @@ export default function SignedInNavbar() {
                             "link-dark": activeTab !== "/payment"
                         })}>
                             <Icon name="payment" size="large" className="mb-2 me-2"/>
-                            Ödeme Yap
+                            {t("Payment")}
                         </Link>
                     </li>
                     <li>
@@ -121,7 +125,7 @@ export default function SignedInNavbar() {
                             "link-dark": activeTab !== "/settings"
                         })}>
                             <Icon name="setting" size="large" className="mb-2 me-2"/>
-                            Ayarlar
+                            {t("Settings")}
                         </Link>
                     </li>
                 </ul>

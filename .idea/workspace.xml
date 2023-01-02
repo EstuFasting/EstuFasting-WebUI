@@ -4,36 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5ded95da-ca20-4875-ac92-55e5fa62d91c" name="Changes" comment="deployment">
-      <change afterPath="$PROJECT_DIR$/src/assets/css/main-page.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/css/settings.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/menu-card-bg.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/yemekhane.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/MenuDisplayCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/881808e1-71d7-4e3e-968d-96940ccd9553.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/881808e1-71d7-4e3e-968d-96940ccd9553.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+    <list default="true" id="5ded95da-ca20-4875-ac92-55e5fa62d91c" name="Changes" comment="v1.0">
+      <change afterPath="$PROJECT_DIR$/public/locales/en/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/locales/tr/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/i18next.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/css/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/css/forms.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/forms.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/css/layout.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/layout.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DisabledReservationCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DisabledReservationCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/EsCalendar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/EsCalendar.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/LoginForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LoginForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MenuDisplayCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MenuDisplayCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PaymentSummary.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PaymentSummary.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ReservationCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ReservationCard.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/SignUpForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SignUpForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/Dashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/Dashboard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/Footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/Footer.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/layouts/SignedInNavbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/SignedInNavbar.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/layouts/SignedOutNavbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/SignedOutNavbar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Calendar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Calendar.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/LoginAndSignUp.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/LoginAndSignUp.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Payment.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Payment.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Reservation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Reservation.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Settings.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Settings.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/SignedOutMain.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/SignedOutMain.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/authService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/authService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/cateringService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/cateringService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/customerService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/customerService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/diningHallService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/diningHallService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/cateringActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/cateringActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/initialStates/cateringProps.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/initialStates/cateringProps.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/reducers/cateringReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/cateringReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utilities/dateUtils.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utilities/dateUtils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/reservationService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/reservationService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/userService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/userService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utilities/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utilities/constants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utilities/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utilities/utils.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,8 +45,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -71,7 +73,7 @@
     &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;last.edited.regexp&quot;: &quot;Sample Text&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Format Recovery/Work - School/Workspace/Java Projects/EstuFasting/EstuFasting-WebUI/estufasting-webui-ms&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Format Recovery/Work - School/Workspace/Java Projects/EstuFasting/EstuFasting-WebUI/estufasting-webui/public/locales/tr&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
@@ -80,7 +82,8 @@
     &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.2.1\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;inlay.hints&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.3.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -91,11 +94,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Format Recovery\Work - School\Workspace\Java Projects\EstuFasting\EstuFasting-WebUI\estufasting-webui\public\locales\tr" />
       <recent name="D:\Format Recovery\Work - School\Workspace\Java Projects\EstuFasting\EstuFasting-WebUI\estufasting-webui\src\assets\images" />
       <recent name="D:\Format Recovery\Work - School\Workspace\Java Projects\EstuFasting\EstuFasting-WebUI\estufasting-webui\src\assets\css" />
       <recent name="C:\Users\smh09\Desktop\EstuFasting\EstuFasting-WebUI\estufasting-webui\src\store\reducers" />
       <recent name="C:\Users\smh09\Desktop\EstuFasting\EstuFasting-WebUI\estufasting-webui\src\store\initialStates" />
-      <recent name="C:\Users\smh09\Desktop\EstuFasting\EstuFasting-WebUI\estufasting-webui\src\store\actions" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Format Recovery\Work - School\Workspace\Java Projects\EstuFasting\EstuFasting-WebUI\estufasting-webui\src\assets\scss" />
@@ -159,6 +162,8 @@
       <workItem from="1672481967909" duration="21914000" />
       <workItem from="1672519615065" duration="1352000" />
       <workItem from="1672562183492" duration="30088000" />
+      <workItem from="1672599754702" duration="1569000" />
+      <workItem from="1672606790915" duration="13881000" />
     </task>
     <task id="LOCAL-00001" summary="deployment">
       <created>1672256247753</created>
@@ -194,6 +199,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="deployment" />
-    <option name="LAST_COMMIT_MESSAGE" value="deployment" />
+    <MESSAGE value="v1.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="v1.0" />
   </component>
 </project>

@@ -7,9 +7,11 @@ import ReservationService from "../services/reservationService";
 import {useDispatch, useSelector} from "react-redux";
 import DisabledReservationCard from "./DisabledReservationCard";
 import {isInThePast} from "../utilities/dateUtils";
+import {useTranslation} from "react-i18next";
 
 function ReservationCard({catering, date, diningHalls}) {
 
+    const {t, i18n} = useTranslation();
     const [loading, setLoading] = useState(false);
     const reservationService = new ReservationService();
     const user = useSelector(state => state?.user.userProps.user);
@@ -17,7 +19,7 @@ function ReservationCard({catering, date, diningHalls}) {
 
     const diningHallOptions = diningHalls.map(diningHall => ({
         key: diningHall.id,
-        text: diningHall.description.replace("Dining Hall", "Yemekhanesi").replace("Student", "Öğrenci").replace("Personnel", "Personel"),
+        text: i18n.language === "tr" ? diningHall.description.replace("Dining Hall", "Yemekhanesi").replace("Student", "Öğrenci").replace("Personnel", "Personel"): diningHall.description,
         value: diningHall.id
     })).sort((a, b) => b.text - a.text);
 
@@ -28,13 +30,14 @@ function ReservationCard({catering, date, diningHalls}) {
     const makeReservation = (cateringId, customerId) => {
         if (loading) return;
         if (inThePast) {
-            toast.warning("Geçmiş tarihli rezervasyon yapılamaz")
+            toast.warning(t("A reservation with a past date cannot be made"))
             return;
         }
         setLoading(true)
         reservationService.makeReservation({cateringId: cateringId, customerId: customerId}).then(response => {
-            toast.success("Rezervasyon başarılı");
-            dispatch(syncUser({...user, reservations: [...user.reservations, response.data.data]}))
+            toast.success(t("Reservation successful"));
+            user.reservations =  [...user.reservations, response.data.data];
+            dispatch(syncUser({...user}))
         }).catch(handleCatch).finally(() => setLoading(false))
     }
 
@@ -42,9 +45,9 @@ function ReservationCard({catering, date, diningHalls}) {
         if (loading) return;
         setLoading(true)
         reservationService.cancelReservation(reservationId).then(() => {
-            toast.warn("Rezervasyon iptal edildi");
+            toast.warn(t("Reservation has canceled"));
             const index = user.reservations.findIndex(r => r.id === reservationId);
-            if (index === -1) toast.error("Bir sorun oluştu tekrar giriş yapmayı deneyin.")
+            if (index === -1) toast.error(t("There was a problem try logging in again"))
             user.reservations.splice(index, 1)
             dispatch(syncUser({...user}))
         }).catch(handleCatch).finally(() => setLoading(false))
@@ -57,27 +60,27 @@ function ReservationCard({catering, date, diningHalls}) {
         if (inThePast)
             return (
                 <button className="container-fluid m-0 h-100 border-0 action-button past cursor-initial">
-                    <Icon name="food"/> Afiyet Olsun
+                    <Icon name="food"/> {t("Enjoy your meal")}
                 </button>
             )
         if (!!reservation && paid)
             return (
                 <button className="container-fluid m-0 h-100 border-0 action-button cursor-initial paid">
-                    ÖDEME YAPILDI
+                    {t("Paid")}
                 </button>
             )
         if (!!reservation && !paid)
             return (
                 <button className={`container-fluid m-0 h-100 border-0 action-button reserved`}
                         onClick={() => cancelReservation(reservation.id)}>
-                    {loading ? <Icon name="circle notch" loading size="large"/> : "REZERVASYON YAPILDI"}
+                    {loading ? <Icon name="circle notch" loading size="large"/> : t("Reservation has made")}
                 </button>
             )
         return (
             <button
                 className={`container-fluid m-0 h-100 border-0 action-button`}
                 onClick={() => makeReservation(catering.id, user.id)}>
-                {loading ? <Icon name="circle notch" loading size="large"/> : "REZERVASYON YAP"}
+                {loading ? <Icon name="circle notch" loading size="large"/> : t("Make Reservation")}
             </button>
         )
     }

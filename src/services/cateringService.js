@@ -1,6 +1,7 @@
 import axios from "axios"
 import {urlParams} from "../utilities/utils";
 import {addDays, dateToDateString, getFirstDayOfThisWeek} from "../utilities/dateUtils";
+import i18n from "../i18next";
 
 export default class CateringService {
 
@@ -13,7 +14,7 @@ export default class CateringService {
             "sort.orders%5B0%5D.property": "date",
             lower: dateToDateString(lower),
             upper: dateToDateString(upper)
-        })}`, {headers: {"Accept-Language": "TR"}})
+        })}`, {headers: {"Accept-Language": i18n.language}})
     }
 
 }

@@ -4,9 +4,11 @@ import {MONTH_NAMES} from "../utilities/constants";
 import {value} from "lodash/seq";
 import {classNames, range} from "../utilities/utils";
 import {dateToDateString, getDayCountOfMonth, weekdayIndex} from "../utilities/dateUtils";
+import {useTranslation} from "react-i18next";
 
 function EsCalendar({foot, reservations}) {
 
+    const {t} = useTranslation();
     const currentYear = new Date().getFullYear();
     const currentMonthIndex = new Date().getMonth();
     const currentMonth = MONTH_NAMES[currentMonthIndex];
@@ -16,7 +18,7 @@ function EsCalendar({foot, reservations}) {
 
     const monthOptions = MONTH_NAMES.map((monthName, index) => ({
         key: monthName,
-        text: monthName,
+        text: t(monthName),
         value: index
     })).sort((a, b) => {
         if (a.text === currentMonth && b.text !== currentMonth) return -1
@@ -72,29 +74,29 @@ function EsCalendar({foot, reservations}) {
 
     return (
         <div id="calendar-wrapper">
-            <Dropdown className="calendar-dropdown" style={{left: 0}} placeholder={selectedYear + " Yılı"} search
+            <Dropdown className="calendar-dropdown" style={{left: 0}} placeholder={selectedYear} search
                       selection value={selectedYear} options={yearOptions}
                       onChange={(event, data) => setSelectedYear(YEARS[data.value])}/>
-            <Dropdown className="calendar-dropdown" style={{marginLeft: 200}} placeholder={selectedMonth + " Ayı"}
+            <Dropdown className="calendar-dropdown" style={{marginLeft: 200}} placeholder={t(selectedMonth)}
                       search
                       selection value={selectedMonth} options={monthOptions}
                       onChange={(event, data) => setSelectedMonth(MONTH_NAMES[data.value])}/>
             <div className="text-center month-name">
                 <div>
                     <Icon name="angle left" onClick={prevMonth}/>
-                    {selectedMonth}
+                    {t(selectedMonth)}
                     <Icon name="angle right" onClick={nextMonth}/>
                 </div>
             </div>
             <table id="calendar" className="rounded">
-                <tr className="weekdays">
-                    <th scope="col" style={{borderTopLeftRadius: 15}}>PAZARTESİ</th>
-                    <th scope="col">SALI</th>
-                    <th scope="col">ÇARŞAMBA</th>
-                    <th scope="col">PERŞEMBE</th>
-                    <th scope="col">CUMA</th>
-                    <th scope="col">CUMARTESİ</th>
-                    <th scope="col" style={{borderTopRightRadius: 15}}>PAZAR</th>
+                <tr className="weekdays text-uppercase">
+                    <th scope="col" style={{borderTopLeftRadius: 15}}>{t("Monday")}</th>
+                    <th scope="col">{t("Tuesday")}</th>
+                    <th scope="col">{t("Wednesday")}</th>
+                    <th scope="col">{t("Thursday")}</th>
+                    <th scope="col">{t("Friday")}</th>
+                    <th scope="col">{t("Saturday")}</th>
+                    <th scope="col" style={{borderTopRightRadius: 15}}>{t("Sunday")}</th>
                 </tr>
 
                 <tr className="days">

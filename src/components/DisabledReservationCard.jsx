@@ -1,8 +1,11 @@
 import React from 'react';
 import {range} from "../utilities/utils";
 import {Dropdown, Icon} from "semantic-ui-react";
+import {useTranslation} from "react-i18next";
 
 function DisabledReservationCard({date, diningHallOptions}) {
+
+    const {t} = useTranslation();
 
     return (
         <div className="card h-auto reservation-card border-0 disabled">
@@ -28,7 +31,7 @@ function DisabledReservationCard({date, diningHallOptions}) {
             <div className="card-footer p-0">
                 <button className={`container-fluid m-0 h-100 border-0 action-button`}
                         style={{backgroundColor: "#525252", cursor: "initial"}}>
-                    <Icon name="wait"/> Günün menüsü oluşturulmadı
+                    <Icon name="wait"/> {t("The menu has not been created")}
                 </button>
             </div>
         </div>

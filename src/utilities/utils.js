@@ -1,9 +1,10 @@
 import {toast} from "react-toastify";
+import i18n from "../i18next";
 
 export const handleCatch = (error) => {
     const resp = error.response
     if (!resp || !resp.data) {
-        toast.error("Something went wrong 🙁");
+        toast.error(i18n.t("Something went wrong") +" 🙁");
         return false;
     }
     if (resp.data.data) {

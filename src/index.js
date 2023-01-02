@@ -8,6 +8,7 @@ import {Provider} from "react-redux";
 import {BrowserRouter} from "react-router-dom";
 import App from "./App";
 import "react-toastify/dist/ReactToastify.min.css"
+import './i18next';
 
 const store = configureStore();
 

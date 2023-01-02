@@ -11,6 +11,7 @@ import {useDispatch, useSelector} from "react-redux";
 import DiningHallService from "../services/diningHallService";
 import {syncCaterings} from "../store/actions/cateringActions";
 import {syncDiningHalls} from "../store/actions/diningHallActions";
+import {useTranslation} from "react-i18next";
 
 function Reservation() {
 
@@ -18,6 +19,7 @@ function Reservation() {
     const user = useSelector(state => state?.user.userProps.user);
     const cateringsRedux = useSelector(state => state?.caterings.cateringProps.caterings);
     const diningHallsRedux = useSelector(state => state?.diningHalls.diningHallProps.diningHalls);
+    const {t} = useTranslation();
 
     const reservationService = new ReservationService();
 
@@ -61,16 +63,16 @@ function Reservation() {
         setDateCateringMap(temp)
     }, [selectedMeal, caterings])
 
-    if (caterings.length === 0 || dateCateringMap.length === 0)
+    if (!user.reservations || caterings.length === 0 || dateCateringMap.length === 0)
         return (
             <div className="page-loader">
-                <Loader content={<div><Icon name="glass martini"/> Menüler getiriliyor...</div>} inline='centered' active size="large"/>
+                <Loader content={<div><Icon name="glass martini"/> {t("Fetching Menus")}...</div>} inline='centered' active size="large"/>
             </div>
         )
 
     const mealOptions = [
-        {key: 2, text: "Öğle Yemeği", value: 2},
-        {key: 3, text: "Akşam Yemeği", value: 3}
+        {key: 2, text: t("Lunch"), value: 2},
+        {key: 3, text: t("Dinner"), value: 3}
     ]
 
     const getReservationModels = (firstWeekDayDate) => {
@@ -92,12 +94,12 @@ function Reservation() {
         if (weekLoading) return;
         const models = getReservationModels(firstWeekDayDate)
         if (models.length === 0) {
-            toast.warning("Seçilen haftada yapılacak rezervasyon kalmadı");
+            toast.warning(t("There are no reservations left for the selected week"));
             return;
         }
         setWeekLoading(true)
         reservationService.makeReservationMultiple({models: models}).then(response => {
-            toast.success("Rezervasyon başarılı");
+            toast.success(t("Reservation successful"));
             dispatch(syncUser({...user, reservations: [...user.reservations, ...response.data.data]}))
         }).catch(handleCatch).finally(() => setWeekLoading(false))
     }
@@ -109,12 +111,12 @@ function Reservation() {
         for (let i = 0; i < 4; i++)
             models.push(...getReservationModels(addDays(startDate, 7 * i)))
         if (models.length === 0) {
-            toast.warning("Bu ayda yapılacak rezervasyon kalmadı");
+            toast.warning(t("No reservations left this month"));
             return;
         }
         setMonthLoading(true)
         reservationService.makeReservationMultiple({models: models}).then(response => {
-            toast.success("Rezervasyon başarılı");
+            toast.success(t("Reservation successful"));
             dispatch(syncUser({...user, reservations: [...user.reservations, ...response.data.data]}))
         }).catch(handleCatch).finally(() => setMonthLoading(false))
     }
@@ -126,7 +128,7 @@ function Reservation() {
                           onChange={(event, data) => setSelectedMeal(data.value)}/>
                 <button className="reservation-button" style={{width: "19%"}}
                         onClick={makeMonthlyReservation}>
-                    {monthLoading ? <Icon name="circle notch" loading/> : "Tüm Ayı Ekle"}
+                    {monthLoading ? <Icon name="circle notch" loading/> : t("Add All Month")}
                 </button>
             </div>
             <div className="row row-cols-1 row-cols-md-5 g-3">
@@ -136,7 +138,7 @@ function Reservation() {
                             {index % 5 === 0 ?
                                 <button className="reservation-button"
                                         onClick={() => makeWeeklyReservation(entry.date)}>
-                                    {weekLoading ? <Icon name="circle notch" loading/> : "Tüm Haftayı Ekle"}
+                                    {weekLoading ? <Icon name="circle notch" loading/> : t("Add All Week")}
                                 </button> :
                                 <button className="reservation-button opacity-0" style={{cursor: "initial"}}></button>
                             }
